@@ -1,0 +1,144 @@
+<div class="container mt-3">
+  <div class="float-end my-4">
+    <button
+      class="btn btn-primary btn-sm me-2 rounded"
+      routerLink="/addinquiry"
+    >
+      <svg
+        style="margin-right: 5px"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-person-plus-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+        />
+      </svg>
+      Add Inquiry
+    </button>
+    <button
+      class="btn btn-primary btn-sm ms-2 rounded "
+      routerLink="/contacted"
+    >
+      <svg
+        style="margin-right: 5px"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-person-check-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+        />
+        <path
+          d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+        />
+      </svg>
+      Contacted
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="usersArray" class="mat-elevation-z8 text-center p-3">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="srNo" >
+      <th mat-header-cell *matHeaderCellDef class="text-center h5"> No. </th>
+      <td mat-cell *matCellDef="let userData"> {{userData.srNo}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="text-center h5"> Name </th>
+      <td mat-cell *matCellDef="let userData"> {{userData.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="text-center h5"> Email </th>
+      <td mat-cell *matCellDef="let userData"> {{userData.email}} </td>
+    </ng-container>
+  
+    <!-- Contact Column -->
+    <ng-container matColumnDef="contact">
+      <th mat-header-cell *matHeaderCellDef class="text-center h5"> Contact </th>
+      <td mat-cell *matCellDef="let userData"> {{userData.contact}} </td>
+    </ng-container>
+  
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="text-center h5"> Action </th>
+      <td mat-cell *matCellDef="let userData">         
+        <button mat-icon-button color="warn" aria-label="Example icon button with a delete icon" (click)="deleteData(userData.srNo)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+
+  <!-- <table mat-table [dataSource]="usersArray" class="mat-elevation-z8" *ngFor="let userData of usersData; let i = index;">
+  
+    
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{i + 1}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{ userData.name }} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{ userData.email }} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="contact">
+      <th mat-header-cell *matHeaderCellDef> Contact </th>
+      <td mat-cell *matCellDef="let element"> {{ userData.contact }} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table> -->
+  
+  
+
+  <!-- <table class="bg-light p-3 m-3 table table-striped table-bordered table-hover">
+    <th class="thWidth">Sr. No.</th>
+    <th class="thWidth">Name</th>
+    <th class="thWidth">Email</th>
+    <th class="thWidth">Contact</th>
+    <th class="thWidth">Delete</th>
+    <tr *ngFor="let userData of usersData; let i = index">
+      <td class="tdWidth">{{ i + 1 }}</td>
+      <td class="tdWidth">{{ userData.name }}</td>
+      <td class="tdWidth">{{ userData.email }}</td>
+      <td class="tdWidth">{{ userData.contact }}</td>
+      <td class="tdWidth">
+        <button type="button" class="btn" (click)="deleteRow(userData.srNo)">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </td>
+    </tr>
+  </table> -->
+</div>

@@ -1,0 +1,26 @@
+            create modules(including html, css, ts, module.ts files)
+ng g m registration --route registration --module app.module
+ng g m login --route login --module app.module
+ng g m inquiries --route inquiries --module app.module
+ng g m addinquiry --route addinquiry --module app.module
+ng g m contacted --route contacted --module app.module
+
+            create single module file
+ng g m moduleName --module (parent-module-name) app.module
+ng g m material --module app.module
+          create interface file
+ng g interface interfaces/addinquiry
+
+
+
+<label for="exampleInputEmail1" class="form-label h6 text-left">Email:</label>
+      <input [(ngModel)]="username" type="email" class="form-control shadow-sm my-3 ng-untouched ng-pristine ng-valid" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="Ex:abc@gmail.com" required>
+
+
+<mat-form-field style="width: 450px;" appearance="fill">
+          <mat-label>Name: </mat-label>
+          <input type="text" matInput placeholder="Name" formControlName="name" required>
+          <div *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched">
+            <p style="color: red;">Enter your name</p>
+          </div>
+        </mat-form-field>

@@ -1,0 +1,99 @@
+<div class="container p-4 card mt-5 rounded-3 form-div shadow">
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container text-center mb-3">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>lock</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <h1 class="text-center" style="font-size: 36px;">Sign Up</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7865.jpg" width="90%" height="90%" alt="">
+      </div>
+      <div class="col-6">
+        <form class="login-form " [formGroup]="registerForm">
+          <div class="d-grid my-3">
+            <mat-form-field appearance="standard">
+              <mat-label>Name: </mat-label>
+              <input 
+                type="text"
+                matInput
+                placeholder="Name"
+                formControlName="name"
+                required
+              />
+              <div
+                *ngIf="
+                  registerForm.get('name')?.hasError('required') &&
+                  registerForm.get('name')?.touched
+                "
+              >
+                <p style="color: red">Enter your name</p>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <div class="d-grid my-3">
+            <mat-form-field appearance="standard">
+              <mat-label>Email: </mat-label>
+              <input 
+                type="email"
+                matInput
+                placeholder="Ex:abc@gmail.com"
+                formControlName="email"
+                required
+              />
+              <div
+                *ngIf="
+                  registerForm.get('email')?.hasError('required') &&
+                  registerForm.get('email')?.touched
+                "
+              >
+                <p style="color: red">Enter your correct email</p>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <div class="d-grid my-3">
+            <mat-form-field appearance="standard">
+              <mat-label>Password: </mat-label>
+              <input
+                type="password"
+                matInput
+                placeholder=""
+                formControlName="password"
+                required
+              />
+              <div
+                *ngIf="
+                  registerForm.get('password')?.hasError('required') &&
+                  registerForm.get('password')?.touched
+                "
+              >
+                <p style="color: red">Enter your correct password</p>
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="d-grid my-3">
+            <button
+              type="submit"
+              class="btn btn-primary rounded shadow my-3"
+              (click)="register()"
+              [disabled]="!registerForm.valid"
+              routerLink=""
+            >
+              Register
+            </button>
+          </div>
+          <p class="text-center my-2">
+            Already Registered? Login <a routerLink="">here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

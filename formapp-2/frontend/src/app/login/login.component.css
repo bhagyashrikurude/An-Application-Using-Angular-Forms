@@ -1,0 +1,11 @@
+.form-div {
+  max-width: 1000px;
+  max-height: 570px;
+  background-color: white;
+}
+h1{
+  font-family: 'Castoro', serif;
+}
+div .example-button-container button{
+  background-color: #1A73E8;
+}

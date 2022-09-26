@@ -1,0 +1,56 @@
+<div class="container mt-3">
+    <div class="float-start  my-3 px-4"> 
+      <button class="btn btn-primary btn-sm rounded" routerLink="/inquiries"> <i class="fa-solid fa-circle-chevron-left me-2"></i> Back</button>
+    </div>
+
+    <table mat-table [dataSource]="usersData" class="mat-elevation-z8 text-center p-3">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="srNo" >
+        <th mat-header-cell *matHeaderCellDef class="text-center h5"> No. </th>
+        <td mat-cell *matCellDef="let userData"> {{userData.srNo}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="text-center h5"> Name </th>
+        <td mat-cell *matCellDef="let userData"> {{userData.name}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="text-center h5"> Email </th>
+        <td mat-cell *matCellDef="let userData"> {{userData.email}} </td>
+      </ng-container>
+    
+      <!-- Contact Column -->
+      <ng-container matColumnDef="contact">
+        <th mat-header-cell *matHeaderCellDef class="text-center h5"> Contact </th>
+        <td mat-cell *matCellDef="let userData"> {{userData.contact}} </td>
+      </ng-container>
+    
+      <!-- Action Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="text-center h5"> Status </th>
+        <td mat-cell *matCellDef="let userData"> {{ userData.status }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- <table class="table table-striped table-bordered table-hover">
+      <th>Sr. No.</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Status</th>
+      <tr *ngFor="let userData of usersData; let i = index">
+        <td *ngIf="userData.status">{{ i + 1 }}</td>
+        <td *ngIf="userData.status">{{userData.name}}</td>
+        <td *ngIf="userData.status">{{userData.email}}</td>
+        <td *ngIf="userData.status">{{userData.contact}}</td>
+        <td *ngIf="userData.status">{{userData.status}}</td>
+      </tr>
+    </table> -->
+  </div>
